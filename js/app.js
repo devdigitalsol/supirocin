@@ -178,7 +178,7 @@ document.addEventListener("DOMContentLoaded", () => {
       let obstacleTimerId = setInterval(moveObstacle, 20);
 
       setTimeout(generateObstacle, 1500);
-      obstacle.addEventListener("touchmove", (e) => {
+      obstacle.addEventListener("mouseover", (e) => {
         obstacle.style.opacity = 0;
       });
     }
