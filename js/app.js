@@ -178,19 +178,16 @@ document.addEventListener("DOMContentLoaded", () => {
       let obstacleTimerId = setInterval(moveObstacle, 20);
 
       setTimeout(generateObstacle, 1500);
+      obstacle.addEventListener("touchmove", (e) => {
+        obstacle.style.opacity = 0;
+      });
     }
 
     generateObstacle();
-
-    document.querySelectorAll(".obstacle").forEach((obs) => {
-      obs.addEventListener("touchmove", (e) => {
-        console.log(e);
-      });
-    });
   }
-  document.querySelector(".box").addEventListener("touchmove", (e) => {
-    if (document.querySelector(".box")) {
-      document.querySelector(".box").remove();
-    }
-  });
+  // document.querySelector(".box").addEventListener("touchmove", (e) => {
+  //   if (document.querySelector(".box")) {
+  //     document.querySelector(".box").remove();
+  //   }
+  // });
 });
