@@ -5,74 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        html, body {
-            height: 100%;
-        }
-        body {
-            font-family: sans-serif;
-            font-size: 16px;
-        }
-        #wrapper {
-            width: 100%;
-            height: 100vh;
-            position: relative;
-            overflow: hidden;
-        }
-        .obstacle {
-            position: absolute;
-            width: 80px;
-            height: 80px;
-            transform: translateY(80px);
-            bottom: 0;
-        }
-        .obstacle img {
-            display: block;
-            width: 100%;
-        }
-        .obstacle.animateleft {
-            animation: animateleft 2s both 0s ease-in-out;
-        }
-        .obstacle.animateright {
-            animation: animateright 2s both 0s ease-in-out;
-        }
-        @keyframes animateleft {
-            0% {
-                bottom: 0;
-                transform: translateX(0) rotate(-10deg);
-            }
-          
-            35% {
-                bottom: 70%;
-                transform: translateX(-20px) rotate(0deg);
-            }
-            100% {
-                bottom: -20%;
-                transform: translateX(-40px) rotate(30deg);
-            }
-        }
-        @keyframes animateright {
-            0% {
-                bottom: 0;
-                transform: translateX(0) rotate(10deg);
-            }
-            
-            35% {
-                bottom: 70%;
-                transform: translateX(20px) rotate(0deg);
-                
-            }
-            100% {
-                bottom: -20%;
-                transform: translateX(40px) rotate(-30deg);
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="css/app.css">
     <script src="js/app.js"></script>
 </head>
 <body>
