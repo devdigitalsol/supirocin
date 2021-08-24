@@ -162,8 +162,6 @@ document.addEventListener("DOMContentLoaded", () => {
       gameDisplay.appendChild(obstacle);
       obstacle.style.left = `${obstacleLeft}px`;
       obstacle.setAttribute("data-id", createObs.id);
-      // let obsImg = document.createElement("img");
-      // obsImg.setAttribute("src", `images/indications/${createObs.img}`);
       obstacle.appendChild(createObs.img);
 
       let randClass =
@@ -183,5 +181,16 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     generateObstacle();
+
+    document.querySelectorAll(".obstacle").forEach((obs) => {
+      obs.addEventListener("touchmove", (e) => {
+        console.log(e);
+      });
+    });
   }
+  document.querySelector(".box").addEventListener("touchmove", (e) => {
+    if (document.querySelector(".box")) {
+      document.querySelector(".box").remove();
+    }
+  });
 });

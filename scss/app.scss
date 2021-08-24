@@ -64,3 +64,12 @@ body {
     transform: translateX(40px) rotate(-30deg);
   }
 }
+.box {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background: red;
+  z-index: 1;
+}
