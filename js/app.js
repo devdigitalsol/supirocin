@@ -6,22 +6,22 @@ document.addEventListener("DOMContentLoaded", () => {
   let gameDisplay = document.getElementById("wrapper");
   const animateclasses = ["animateleft", "animateright"];
   let imgUrls = [
-    "images/indications/g1.png",
-    "images/indications/g2.png",
-    "images/indications/g3.png",
-    "images/indications/g4.png",
-    "images/indications/g5.png",
-    "images/indications/g6.png",
-    "images/indications/g7.png",
-    "images/indications/g8.png",
-    "images/indications/g9.png",
-    "images/indications/g10.png",
-    "images/indications/b1.png",
-    "images/indications/b2.png",
-    "images/indications/b3.png",
-    "images/indications/b4.png",
-    "images/indications/b5.png",
-    "images/indications/b6.png",
+    "images/indications/g1.png?" + Math.random(),
+    "images/indications/g2.png?" + Math.random(),
+    "images/indications/g3.png?" + Math.random(),
+    "images/indications/g4.png?" + Math.random(),
+    "images/indications/g5.png?" + Math.random(),
+    "images/indications/g6.png?" + Math.random(),
+    "images/indications/g7.png?" + Math.random(),
+    "images/indications/g8.png?" + Math.random(),
+    "images/indications/g9.png?" + Math.random(),
+    "images/indications/g10.png?" + Math.random(),
+    "images/indications/b1.png?" + Math.random(),
+    "images/indications/b2.png?" + Math.random(),
+    "images/indications/b3.png?" + Math.random(),
+    "images/indications/b4.png?" + Math.random(),
+    "images/indications/b5.png?" + Math.random(),
+    "images/indications/b6.png?" + Math.random(),
   ];
   for (let i = 0; i < imgUrls.length; i++) {
     imgs.push(new Image());
