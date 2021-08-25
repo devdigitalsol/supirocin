@@ -45,7 +45,7 @@ body {
     transform: translateX(-20px) rotate(0deg);
   }
   100% {
-    bottom: -20%;
+    bottom: -25%;
     transform: translateX(-40px) rotate(30deg);
   }
 }
@@ -60,7 +60,16 @@ body {
     transform: translateX(20px) rotate(0deg);
   }
   100% {
-    bottom: -20%;
+    bottom: -25%;
     transform: translateX(40px) rotate(-30deg);
   }
+}
+.mousePointer {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #000;
 }

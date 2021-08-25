@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+  let body = document.body;
   let imgs = [];
   let counter = 0;
   let winWidth = window.innerWidth;
@@ -152,6 +153,19 @@ document.addEventListener("DOMContentLoaded", () => {
       },
     ];
 
+    function isCollapsed() {
+      var object_1 = mousePointer.getBoundingClientRect();
+      var object_2 = box.getBoundingClientRect();
+      if (
+        object_1.left < object_2.left + object_2.width &&
+        object_1.left + object_1.width > object_2.left &&
+        object_1.top < object_2.top + object_2.height &&
+        object_1.top + object_1.height > object_2.top
+      ) {
+        box.remove();
+      }
+    }
+
     function generateObstacle() {
       let randomX = Math.floor(Math.random() * (winWidth - 80));
       let createObs = data[Math.floor(Math.random() * data.length)];
@@ -169,25 +183,57 @@ document.addEventListener("DOMContentLoaded", () => {
       function moveObstacle() {
         obstacle.classList.add(randClass);
       }
-      setTimeout(() => {
-        clearInterval(obstacleTimerId);
-        gameDisplay.removeChild(obstacle);
-      }, 2000);
 
-      // move obstacle top to top
       let obstacleTimerId = setInterval(moveObstacle, 20);
 
       setTimeout(generateObstacle, 1500);
-      obstacle.addEventListener("mouseover", (e) => {
-        obstacle.style.opacity = 0;
-      });
+
+      let mousePointer = document.createElement("div");
+      mousePointer.classList.add("mousePointer");
+      body.addEventListener("touchstart", startTouch);
+      body.addEventListener("mousedown", startTouch);
+      body.addEventListener("touchend", removeTouch);
+      body.addEventListener("mouseup", removeTouch);
+
+      function startTouch(e) {
+        body.append(mousePointer);
+        body.addEventListener("touchmove", move);
+        body.addEventListener("mousemove", move);
+        move(e);
+      }
+      function removeTouch(e) {
+        body.removeEventListener("touchmove", move);
+        body.removeEventListener("mousemove", move);
+        mousePointer.remove();
+      }
+
+      function move(e) {
+        mousePointer.style.left = e.touches[0].pageX - 1 + "px";
+        mousePointer.style.top = e.touches[0].pageY - 1 + "px";
+        mousePointer.style.cursor = "pointer";
+        isCollapsed();
+      }
+      function isCollapsed() {
+        var object_1 = mousePointer.getBoundingClientRect();
+        var object_2 = obstacle.getBoundingClientRect();
+        if (
+          object_1.left < object_2.left + object_2.width &&
+          object_1.left + object_1.width > object_2.left &&
+          object_1.top < object_2.top + object_2.height &&
+          object_1.top + object_1.height > object_2.top
+        ) {
+          obstacle.remove();
+        }
+      }
+      setTimeout(() => {
+        clearInterval(obstacleTimerId);
+        console.log(obstacle);
+        if (gameDisplay.hasChildNodes()) {
+          obstacle.remove();
+        }
+      }, 2000);
     }
 
     generateObstacle();
   }
-  // document.querySelector(".box").addEventListener("touchmove", (e) => {
-  //   if (document.querySelector(".box")) {
-  //     document.querySelector(".box").remove();
-  //   }
-  // });
 });
