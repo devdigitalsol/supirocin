@@ -200,6 +200,7 @@ body {
     border-radius: 30px;
   }
   .range {
+    transition: all 0.3s ease-in-out;
     background: rgb(157, 168, 206);
     background: linear-gradient(
       0deg,

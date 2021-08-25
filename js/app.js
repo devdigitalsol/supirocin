@@ -1,5 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
+  let setCount = 50;
   let obsCount = 0;
+  let range;
   const body = document.body;
   let bodyBg = "images/sceenBg.jpg";
   let bodImg = new Image();
@@ -314,16 +316,18 @@ document.addEventListener("DOMContentLoaded", () => {
           obstacle.remove();
         }
       }, 4000);
-      if (obsCount === 50) {
+      if (obsCount === setCount) {
         clearInterval(generateObs);
       }
+      range = (score * 100) / setCount;
+      document.querySelector(".range").style.width = 100 - range + "%";
     }
     let generateObs = setInterval(() => {
       generateObstacle();
     }, 1000);
 
     function startTimer() {
-      let count = 50;
+      let count = setCount;
       timer = setInterval(function () {
         document.getElementById("timer").textContent = count--;
         if (count < 0) {
