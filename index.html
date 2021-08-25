@@ -1,38 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="css/app.css" />
+    <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", () => {
+            var iOS = ( navigator.userAgent.match(/(iPad|iPhone|iPod)/i) ? true : false );
+
+            var ua = navigator.userAgent.toLowerCase();
+            var isAndroid = ua.indexOf("android") > -1;
+            window.addEventListener('resize',checkRotation)
+            function checkRotation(){
+                if(window.innerWidth < window.innerHeight){
+                    document.getElementById('rotateMsg').innerHTML = 'please rotate your device...'
+                }else {
+                    if(iOS){
+                        document.getElementById('rotateMsg').innerHTML = '<button id="getStart">Get Start</button>'
+                    }else if(isAndroid){
+                        document.getElementById('rotateMsg').innerHTML = '<button id="getStart">Click to fullScreen</button>'
+                    }
+                }
+            }
+            checkRotation()
+        });
+    </script>
     <script src="js/app.js"></script>
     <style>
-        #loader {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #fff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 999;
-        }
+      #loader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 999;
+      }
+      #rotateMsg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 999;
+      }
     </style>
-</head>
-<body>
-    <div id="loader">please wait...</div>
-    <div id="wrapper">
-        <div id="totalScore">
-            <span id="scoreTxt">0</span>
-            <img src="images/scoreBg.png" />
-        </div>
-        <div id="totalTime">
-            <span id="timer">01:01</span>
-            <img src="images/timeBg.png" />
-        </div>
+  </head>
+  <body>
+    <div id="loader">
     </div>
-</body>
+    <div id="rotateMsg">
+    </div>
+    <div id="wrapper">
+      <div id="totalScore">
+        <span id="scoreTxt">0</span>
+        <img src="images/scoreBg.png" />
+      </div>
+      <div id="totalTime">
+        <span id="timer"></span>
+        <img src="images/timeBg.png" />
+      </div>
+      <div id="meter">
+          <span class="meterTxt">Skin Infection Meter</span>
+          <div class="innerMeter">
+              <div class="range"></div>
+          </div>
+        <img src="images/meter.png" />
+      </div>
+    </div>
+  </body>
 </html>

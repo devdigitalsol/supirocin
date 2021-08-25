@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+  let obsCount = 0;
   const body = document.body;
   let bodyBg = "images/sceenBg.jpg";
   let bodImg = new Image();
@@ -33,6 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
     "images/indications/g10-1.png?" + Math.random(),
     "images/indications/g10-2.png?" + Math.random(),
   ];
+  const fullView = document.documentElement;
   for (let i = 0; i < imgUrls.length; i++) {
     imgs.push(new Image());
     imgs[i].src = imgUrls[i];
@@ -42,10 +44,25 @@ document.addEventListener("DOMContentLoaded", () => {
     counter++;
     if (counter === imgUrls.length) {
       console.log("All images loaded!");
-      document.getElementById("loader").addEventListener("click", function () {
-        document.getElementById("loader").remove();
-        init();
-      });
+      document.getElementById("loader").remove();
+      document
+        .getElementById("getStart")
+        .addEventListener("click", function () {
+          document.getElementById("rotateMsg").remove();
+          // openFullscreen();
+          init();
+        });
+    }
+  }
+  function openFullscreen() {
+    if (fullView.requestFullscreen) {
+      fullView.requestFullscreen();
+    } else if (fullView.webkitRequestFullscreen) {
+      /* Safari */
+      fullView.webkitRequestFullscreen();
+    } else if (fullView.msRequestFullscreen) {
+      /* IE11 */
+      fullView.msRequestFullscreen();
     }
   }
 
@@ -198,18 +215,20 @@ document.addEventListener("DOMContentLoaded", () => {
         img2: imgs[17],
       },
     ];
+    // let generateObs = setTimeout(generateObstacle, 1000);
+
+    startTimer();
 
     function generateObstacle() {
+      obsCount = obsCount + 1;
       let randomX = Math.floor(Math.random() * (winWidth - 160));
       if (randomX < 80) {
         randomX = 80;
       }
       let createObs = data[Math.floor(Math.random() * data.length)];
       let obstacleLeft = randomX;
-      let obstacleTop = winHeight;
       const obstacle = document.createElement("div");
       obstacle.classList.add("obstacle");
-
       obstacle.style.left = `${obstacleLeft}px`;
       obstacle.innerHTML = `
         <img src="${createObs.img1.src}" class="leftImg" />
@@ -241,7 +260,6 @@ document.addEventListener("DOMContentLoaded", () => {
         body.removeEventListener("mousemove", move);
         mousePointer.remove();
       }
-
       function move(e) {
         throwSound.play();
         mousePointer.style.left = e.touches[0].pageX - 1 + "px";
@@ -279,6 +297,11 @@ document.addEventListener("DOMContentLoaded", () => {
             if (obs.className === "rightImg") {
               obs.classList.add("remove");
             }
+            if (obs.className === "point") {
+              setTimeout(() => {
+                obs.classList.add("hide");
+              }, 500);
+            }
           });
           setTimeout(() => {
             obstacle.remove();
@@ -287,43 +310,27 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       }
       setTimeout(() => {
-        // clearInterval(obstacleTimerId);
         if (gameDisplay.hasChildNodes()) {
           obstacle.remove();
         }
-      }, 2000);
-
-      setTimeout(generateObstacle, 1000);
+      }, 4000);
+      if (obsCount === 50) {
+        clearInterval(generateObs);
+      }
     }
-    generateObstacle();
+    let generateObs = setInterval(() => {
+      generateObstacle();
+    }, 1000);
+
+    function startTimer() {
+      let count = 50;
+      timer = setInterval(function () {
+        document.getElementById("timer").textContent = count--;
+        if (count < 0) {
+          clearInterval(timer);
+          clearInterval(generateObs);
+        }
+      }, 1000);
+    }
   }
-  startTimer();
 });
-
-function startTimer() {
-  var presentTime = document.getElementById("timer").innerHTML;
-  var timeArray = presentTime.split(/[:]+/);
-  var m = timeArray[0];
-  var s = checkSecond(timeArray[1] - 1);
-  if (s == 59) {
-    m = m - 1;
-  }
-  if ((m + "").length == 1) {
-    m = "0" + m;
-  }
-  if (m < 0) {
-    m = "59";
-  }
-  document.getElementById("timer").innerHTML = m + ":" + s;
-  setTimeout(startTimer, 1000);
-}
-
-function checkSecond(sec) {
-  if (sec < 10 && sec >= 0) {
-    sec = "0" + sec;
-  }
-  if (sec < 0) {
-    sec = "59";
-  }
-  return sec;
-}

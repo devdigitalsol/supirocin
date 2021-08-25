@@ -30,7 +30,7 @@ body {
   transform: translateY(80px);
   bottom: 0;
   border-radius: 50%;
-  animation: animateObs 2s both 0s ease-in-out;
+  animation: animateObs 4s both 0s ease-in-out;
 }
 @keyframes animateObs {
   0% {
@@ -59,7 +59,7 @@ body {
     bottom: 0;
     z-index: 1;
     &.remove {
-      animation: leftRemove 2s ease-in-out forwards;
+      animation: leftRemove 1s ease-in-out forwards;
     }
   }
   &.rightImg {
@@ -67,7 +67,7 @@ body {
     bottom: 0;
     z-index: 1;
     &.remove {
-      animation: rightRemove 3s ease-in-out forwards;
+      animation: rightRemove 1s ease-in-out forwards;
     }
   }
 }
@@ -81,21 +81,21 @@ body {
     transform: translate(-40px, 0px) rotate(-140deg);
   }
   100% {
-    transform: translate(-120px, 0px) rotate(-180deg);
-    bottom: -100%;
+    transform: translate(-80px, 0px) rotate(-180deg);
+    bottom: -200px;
   }
 }
 @keyframes rightRemove {
   0% {
-    transform: translate(20px, -60px) rotate(0);
+    transform: translate(10px, -2px) rotate(0);
     bottom: 0;
   }
   30% {
-    transform: translate(80px, 0px) rotate(30deg);
+    transform: translate(40px, 0px) rotate(60deg);
   }
   100% {
-    transform: translate(180px, 0px) rotate(90deg);
-    bottom: -100%;
+    transform: translate(80px, 0px) rotate(90deg);
+    bottom: -200px;
   }
 }
 .mousePointer {
@@ -116,6 +116,9 @@ body {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+  &.hide {
+    display: none;
+  }
 }
 #totalScore {
   position: absolute;
@@ -157,5 +160,60 @@ body {
     width: 100%;
     text-align: center;
     top: 25px;
+  }
+}
+
+#meter {
+  width: 300px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 20px;
+  overflow: hidden;
+  border-radius: 30px;
+  img {
+    display: block;
+    width: 100%;
+  }
+  .meterTxt {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 600;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-shadow: 1px 1px 2px black;
+    z-index: 2;
+  }
+  .innerMeter {
+    width: 290px;
+    height: 18px;
+    position: absolute;
+    left: 5px;
+    top: 3px;
+    overflow: hidden;
+    border-radius: 30px;
+  }
+  .range {
+    background: rgb(157, 168, 206);
+    background: linear-gradient(
+      0deg,
+      #9da8ce 0%,
+      #9282e9 18%,
+      #f2f5ff 92%,
+      #c3cef4 100%
+    );
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    border-radius: 30px;
+    box-shadow: 6px 0px 6px -4px #000;
   }
 }
