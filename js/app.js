@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
         .getElementById("getStart")
         .addEventListener("click", function () {
           document.getElementById("rotateMsg").remove();
-          // openFullscreen();
+          openFullscreen();
           init();
         });
     }
