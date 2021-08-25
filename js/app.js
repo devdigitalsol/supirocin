@@ -13,42 +13,23 @@ document.addEventListener("DOMContentLoaded", () => {
   let winWidth = window.innerWidth;
   let winHeight = window.innerHeight;
   let gameDisplay = document.getElementById("wrapper");
-  // const animateclasses = ["animateleft", "animateright"];
-  // let imgUrls = [
-  //   "images/indications/g1.png?" + Math.random(),
-  //   "images/indications/g2.png?" + Math.random(),
-  //   "images/indications/g3.png?" + Math.random(),
-  //   "images/indications/g4.png?" + Math.random(),
-  //   "images/indications/g5.png?" + Math.random(),
-  //   "images/indications/g6.png?" + Math.random(),
-  //   "images/indications/g7.png?" + Math.random(),
-  //   "images/indications/g8.png?" + Math.random(),
-  //   "images/indications/g9.png?" + Math.random(),
-  //   "images/indications/g10.png?" + Math.random(),
-  //   "images/indications/b1.png?" + Math.random(),
-  //   "images/indications/b2.png?" + Math.random(),
-  //   "images/indications/b3.png?" + Math.random(),
-  //   "images/indications/b4.png?" + Math.random(),
-  //   "images/indications/b5.png?" + Math.random(),
-  //   "images/indications/b6.png?" + Math.random(),
-  // ];
   let imgUrls = [
+    "images/indications/g1.png?" + Math.random(),
+    "images/indications/g2.png?" + Math.random(),
+    "images/indications/g3.png?" + Math.random(),
+    "images/indications/g4.png?" + Math.random(),
+    "images/indications/g5.png?" + Math.random(),
+    "images/indications/g6.png?" + Math.random(),
+    "images/indications/g7.png?" + Math.random(),
+    "images/indications/g8.png?" + Math.random(),
+    "images/indications/g9.png?" + Math.random(),
     "images/indications/g10.png?" + Math.random(),
-    "images/indications/g10.png?" + Math.random(),
-    "images/indications/g10.png?" + Math.random(),
-    "images/indications/g10.png?" + Math.random(),
-    "images/indications/g10.png?" + Math.random(),
-    "images/indications/g10.png?" + Math.random(),
-    "images/indications/g10.png?" + Math.random(),
-    "images/indications/g10.png?" + Math.random(),
-    "images/indications/g10.png?" + Math.random(),
-    "images/indications/g10.png?" + Math.random(),
-    "images/indications/g10.png?" + Math.random(),
-    "images/indications/g10.png?" + Math.random(),
-    "images/indications/g10.png?" + Math.random(),
-    "images/indications/g10.png?" + Math.random(),
-    "images/indications/g10.png?" + Math.random(),
-    "images/indications/g10.png?" + Math.random(),
+    "images/indications/b1.png?" + Math.random(),
+    "images/indications/b2.png?" + Math.random(),
+    "images/indications/b3.png?" + Math.random(),
+    "images/indications/b4.png?" + Math.random(),
+    "images/indications/b5.png?" + Math.random(),
+    "images/indications/b6.png?" + Math.random(),
     "images/indications/g10-1.png?" + Math.random(),
     "images/indications/g10-2.png?" + Math.random(),
   ];
@@ -60,12 +41,17 @@ document.addEventListener("DOMContentLoaded", () => {
   function incrementCounter() {
     counter++;
     if (counter === imgUrls.length) {
-      init();
       console.log("All images loaded!");
+      document.getElementById("loader").addEventListener("click", function () {
+        document.getElementById("loader").remove();
+        init();
+      });
     }
   }
 
   function init() {
+    let throwSound = new Audio("sound/throw.mp3");
+    let goodHit = new Audio("sound/goodHit.mp3");
     const data = [
       {
         id: 0,
@@ -225,25 +211,17 @@ document.addEventListener("DOMContentLoaded", () => {
       obstacle.classList.add("obstacle");
 
       obstacle.style.left = `${obstacleLeft}px`;
-      obstacle.setAttribute("data-id", createObs.id);
-      obstacle.setAttribute("data-point", createObs.point);
-      obstacle.setAttribute("data-status", createObs.status);
       obstacle.innerHTML = `
         <img src="${createObs.img1.src}" class="leftImg" />
         <img src="${createObs.img2.src}" class="rightImg" />
-        <img src="${createObs.img.src}" class="mainImg" />
+        <img src="${createObs.img.src}" class="mainImg" data-id="${
+        createObs.id
+      }" data-status="${createObs.status}" data-point="${createObs.point}" />
+        <div class="point">${createObs.status === "good" ? "+" : "-"}${
+        createObs.point
+      }</div>
       `;
       gameDisplay.appendChild(obstacle);
-
-      // let randClass =
-      //   animateclasses[Math.floor(Math.random() * animateclasses.length)];
-      // function moveObstacle() {
-      //   obstacle.classList.add(randClass);
-      // }
-
-      // let obstacleTimerId = setInterval(moveObstacle, 20);
-
-      setTimeout(generateObstacle, 1000);
 
       let mousePointer = document.createElement("div");
       mousePointer.classList.add("mousePointer");
@@ -265,6 +243,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       function move(e) {
+        throwSound.play();
         mousePointer.style.left = e.touches[0].pageX - 1 + "px";
         mousePointer.style.top = e.touches[0].pageY - 1 + "px";
         mousePointer.style.cursor = "pointer";
@@ -279,19 +258,20 @@ document.addEventListener("DOMContentLoaded", () => {
           object_1.top < object_2.top + object_2.height &&
           object_1.top + object_1.height > object_2.top
         ) {
-          let getPoint = obstacle.getAttribute("data-point");
-          let getStaus = obstacle.getAttribute("data-status");
-          if (getStaus === "good") {
-            score = score + parseInt(getPoint);
-          } else {
-            score = score - parseInt(getPoint);
-          }
-          console.log(obstacle.childNodes);
-          // obstacle.classList.remove("animateleft");
-          // obstacle.classList.remove("animateright");
+          // document.getElementById("scoreTxt").innerHTML = score;
+          // console.log(score);
           obstacle.childNodes.forEach((obs) => {
             if (obs.className === "mainImg") {
+              let getPoint = obs.getAttribute("data-point");
+              let getStaus = obs.getAttribute("data-status");
+              if (getStaus === "good") {
+                goodHit.play();
+                score = score + parseInt(getPoint);
+              } else {
+                score = score - parseInt(getPoint);
+              }
               obs.remove();
+              document.getElementById("scoreTxt").innerHTML = score;
             }
             if (obs.className === "leftImg") {
               obs.classList.add("remove");
@@ -304,18 +284,46 @@ document.addEventListener("DOMContentLoaded", () => {
             obstacle.remove();
           }, 3000);
           // console.log(mainImg);
-
-          // console.log(score);
         }
       }
-      // setTimeout(() => {
-      //   clearInterval(obstacleTimerId);
-      //   if (gameDisplay.hasChildNodes()) {
-      //     obstacle.remove();
-      //   }
-      // }, 2000);
-    }
+      setTimeout(() => {
+        // clearInterval(obstacleTimerId);
+        if (gameDisplay.hasChildNodes()) {
+          obstacle.remove();
+        }
+      }, 2000);
 
+      setTimeout(generateObstacle, 1000);
+    }
     generateObstacle();
   }
+  startTimer();
 });
+
+function startTimer() {
+  var presentTime = document.getElementById("timer").innerHTML;
+  var timeArray = presentTime.split(/[:]+/);
+  var m = timeArray[0];
+  var s = checkSecond(timeArray[1] - 1);
+  if (s == 59) {
+    m = m - 1;
+  }
+  if ((m + "").length == 1) {
+    m = "0" + m;
+  }
+  if (m < 0) {
+    m = "59";
+  }
+  document.getElementById("timer").innerHTML = m + ":" + s;
+  setTimeout(startTimer, 1000);
+}
+
+function checkSecond(sec) {
+  if (sec < 10 && sec >= 0) {
+    sec = "0" + sec;
+  }
+  if (sec < 0) {
+    sec = "59";
+  }
+  return sec;
+}

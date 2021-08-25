@@ -35,15 +35,15 @@ body {
 @keyframes animateObs {
   0% {
     bottom: 0;
-    transform: rotate(-10deg);
+    // transform: rotate(-10deg);
   }
   35% {
-    bottom: 70%;
-    transform: rotate(0deg);
+    bottom: 80%;
+    // transform: rotate(0deg);
   }
   100% {
     bottom: -25%;
-    transform: rotate(30deg);
+    // transform: rotate(30deg);
   }
 }
 .obstacle img {
@@ -98,46 +98,6 @@ body {
     bottom: -100%;
   }
 }
-// .obstacle.animateleft {
-//   animation: animateleft 2s both 0s ease-in-out;
-//   &.fast {
-//     animation-duration: 1s;
-//   }
-// }
-// .obstacle.animateright {
-//   animation: animateright 2s both 0s ease-in-out;
-//   &.fast {
-//     animation-duration: 1.8s;
-//   }
-// }
-// @keyframes animateleft {
-//   0% {
-//     bottom: 0;
-//     transform: translateX(0) rotate(-10deg);
-//   }
-//   35% {
-//     bottom: 70%;
-//     transform: translateX(-20px) rotate(0deg);
-//   }
-//   100% {
-//     bottom: -25%;
-//     transform: translateX(-40px) rotate(30deg);
-//   }
-// }
-// @keyframes animateright {
-//   0% {
-//     bottom: 0;
-//     transform: translateX(0) rotate(10deg);
-//   }
-//   35% {
-//     bottom: 70%;
-//     transform: translateX(20px) rotate(0deg);
-//   }
-//   100% {
-//     bottom: -25%;
-//     transform: translateX(40px) rotate(-30deg);
-//   }
-// }
 .mousePointer {
   position: absolute;
   left: 0;
@@ -146,4 +106,56 @@ body {
   height: 4px;
   border-radius: 50%;
   background: #fff;
+}
+.point {
+  font-weight: bold;
+  color: #fff;
+  position: absolute;
+  z-index: 1;
+  font-size: 30px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+#totalScore {
+  position: absolute;
+  left: 20px;
+  top: 10px;
+  width: 97px;
+  height: 60px;
+  img {
+    display: block;
+  }
+  #scoreTxt {
+    position: absolute;
+    color: #fff;
+    font-weight: bold;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 100%;
+    text-align: center;
+    top: 25px;
+  }
+}
+#totalTime {
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  width: 97px;
+  height: 59px;
+  img {
+    display: block;
+  }
+  #timer {
+    position: absolute;
+    color: #fff;
+    font-weight: bold;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 100%;
+    text-align: center;
+    top: 25px;
+  }
 }
