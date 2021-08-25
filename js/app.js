@@ -69,8 +69,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function init() {
-    let throwSound = new Audio("sound/throw.mp3");
-    let goodHit = new Audio("sound/goodHit.mp3");
+    let throwSound = new Audio("sound/throw.wav");
+    let goodHit = new Audio("sound/goodHit.wav");
     const data = [
       {
         id: 0,
