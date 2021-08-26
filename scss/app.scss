@@ -19,9 +19,8 @@ body {
   height: 100vh;
   position: relative;
   overflow: hidden;
-  background: url("../images/leftBorder.png") left center,
-    url("../images/rightBorder.png") right center;
-  background-size: cover, cover;
+  background: url("../images/leftBorder.png") left center repeat-y,
+    url("../images/rightBorder.png") right center repeat-y;
 }
 .obstacle {
   position: absolute;
@@ -120,9 +119,20 @@ body {
     display: none;
   }
 }
+.logo {
+  width: 150px;
+  height: 46px;
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  img {
+    display: block;
+  }
+}
 #totalScore {
   position: absolute;
-  left: 20px;
+  left: 15px;
   top: 10px;
   width: 97px;
   height: 60px;
@@ -140,10 +150,13 @@ body {
     text-align: center;
     top: 25px;
   }
+  @media only screen and (max-width: 360px) {
+    transform: scale(0.8);
+  }
 }
 #totalTime {
   position: absolute;
-  right: 20px;
+  right: 15px;
   top: 10px;
   width: 97px;
   height: 59px;
@@ -161,6 +174,9 @@ body {
     text-align: center;
     top: 25px;
   }
+  @media only screen and (max-width: 360px) {
+    transform: scale(0.8);
+  }
 }
 
 #meter {
@@ -168,9 +184,10 @@ body {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  top: 20px;
+  top: 70px;
   overflow: hidden;
   border-radius: 30px;
+  box-shadow: 0 2px 4px -2px #000;
   img {
     display: block;
     width: 100%;
@@ -214,7 +231,6 @@ body {
     height: 100%;
     left: 0;
     top: 0;
-    border-radius: 30px;
     box-shadow: 6px 0px 6px -4px #000;
   }
 }

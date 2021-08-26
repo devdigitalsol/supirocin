@@ -1,4 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
+  const startScreen = document.getElementById("startScreen");
+  const loader = document.getElementById("loader");
+  const getStart = document.getElementById("getStart");
   let setCount = 50;
   let obsCount = 0;
   let range;
@@ -14,7 +17,6 @@ document.addEventListener("DOMContentLoaded", () => {
   let imgs = [];
   let counter = 0;
   let winWidth = window.innerWidth;
-  let winHeight = window.innerHeight;
   let gameDisplay = document.getElementById("wrapper");
   let imgUrls = [
     "images/indications/g1.png?" + Math.random(),
@@ -45,28 +47,14 @@ document.addEventListener("DOMContentLoaded", () => {
   function incrementCounter() {
     counter++;
     if (counter === imgUrls.length) {
-      console.log("All images loaded!");
-      document.getElementById("loader").remove();
-      document
-        .getElementById("getStart")
-        .addEventListener("click", function () {
-          document.getElementById("rotateMsg").remove();
-          openFullscreen();
-          init();
-        });
+      loader.remove();
+      getStart.classList.add("show");
     }
   }
-  function openFullscreen() {
-    if (fullView.requestFullscreen) {
-      fullView.requestFullscreen();
-    } else if (fullView.webkitRequestFullscreen) {
-      /* Safari */
-      fullView.webkitRequestFullscreen();
-    } else if (fullView.msRequestFullscreen) {
-      /* IE11 */
-      fullView.msRequestFullscreen();
-    }
-  }
+  getStart.addEventListener("click", function () {
+    startScreen.remove();
+    init();
+  });
 
   function init() {
     let throwSound = new Audio("sound/throw.mp3?" + Math.random());
@@ -263,7 +251,7 @@ document.addEventListener("DOMContentLoaded", () => {
         mousePointer.remove();
       }
       function move(e) {
-        throwSound.play();
+        // throwSound.play();
         mousePointer.style.left = e.touches[0].pageX - 1 + "px";
         mousePointer.style.top = e.touches[0].pageY - 1 + "px";
         mousePointer.style.cursor = "pointer";
@@ -285,7 +273,7 @@ document.addEventListener("DOMContentLoaded", () => {
               let getPoint = obs.getAttribute("data-point");
               let getStaus = obs.getAttribute("data-status");
               if (getStaus === "good") {
-                goodHit.play();
+                // goodHit.play();
                 score = score + parseInt(getPoint);
               } else {
                 score = score - parseInt(getPoint);
