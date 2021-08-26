@@ -1,6 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
   const startScreen = document.getElementById("startScreen");
   const loginScreen = document.getElementById("loginScreen");
+  const playBtn = document.getElementById("playBtn");
+  const loginForm = document.querySelector(".loginForm");
+  const introLayout = document.querySelector(".introLayout");
 
   window.addEventListener("load", function () {
     startScreen.classList.add("hide");
@@ -41,12 +44,15 @@ document.addEventListener("DOMContentLoaded", () => {
       console.log("done");
       const loginBtn = document.getElementById("loginBtn");
       loginBtn.addEventListener("click", function () {
-        loginScreen.remove();
-        init();
+        loginForm.classList.add("hide");
+        introLayout.classList.add("show");
       });
-      // startScreen.classList.add("hide");
     }
   }
+  playBtn.addEventListener("click", function () {
+    loginScreen.remove();
+    init();
+  });
 
   function init() {
     let throwSound = new Audio("sound/throw.mp3?" + Math.random());

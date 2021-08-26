@@ -53,8 +53,14 @@ body {
   align-items: center;
   z-index: 1;
   flex-direction: column;
-  .logo {
-    margin-bottom: 16px;
+  .supironinja {
+    margin-top: 16px;
+    margin-bottom: 8px;
+  }
+  .board {
+    position: relative;
+    width: 320px;
+    height: 483px;
   }
 }
 .loginForm {
@@ -65,7 +71,24 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform-origin: center top;
+  z-index: 2;
+  &.hide {
+    animation: rotateScreen 1s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+  }
+  @keyframes rotateScreen {
+    0% {
+      transform: rotate(0);
+      opacity: 1;
+    }
+    100% {
+      transform: rotate(90deg);
+      opacity: 0;
+    }
+  }
   .loginTitle {
     width: 193px;
     height: 61px;
@@ -123,6 +146,101 @@ body {
     color: #fff;
   }
   .loginBtn {
+    width: 149px;
+    height: 48px;
+    position: relative;
+    background: transparent;
+    border: 0;
+    outline: 0;
+    margin: 0 auto;
+    display: block;
+    span {
+      position: absolute;
+      color: #fff;
+      text-transform: uppercase;
+      font-weight: 900;
+      text-align: center;
+      width: 100%;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      top: 11px;
+      font-size: 16px;
+    }
+    img {
+      display: block;
+    }
+  }
+}
+.introLayout {
+  width: 320px;
+  height: 483px;
+  background: url("../images/loginBg.png");
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  z-index: 1;
+  transform-origin: center top;
+  &.show {
+    animation: rotateScreen1 1s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+  }
+  @keyframes rotateScreen1 {
+    0% {
+      transform: rotate(-90deg);
+      opacity: 0;
+    }
+    100% {
+      transform: rotate(0);
+      opacity: 1;
+    }
+  }
+  .introTitle {
+    width: 193px;
+    height: 61px;
+    position: absolute;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    top: -20px;
+    img {
+      display: block;
+    }
+    span {
+      position: absolute;
+      color: #fff;
+      text-transform: uppercase;
+      font-weight: 900;
+      text-align: center;
+      width: 100%;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      top: 14px;
+      font-size: 17px;
+    }
+  }
+  .introData {
+    padding: 30px 40px;
+    ul {
+      list-style: none;
+      li {
+        margin-bottom: 20px;
+        color: #fff;
+        text-shadow: 1px 1px 2px black;
+      }
+    }
+  }
+  .allthebest {
+    width: 190px;
+    margin: 0 auto 20px;
+    display: block;
+  }
+  .playBtn {
     width: 149px;
     height: 48px;
     position: relative;
