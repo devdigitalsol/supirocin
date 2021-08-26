@@ -78,10 +78,12 @@ body {
   }
   30% {
     transform: translate(-40px, 0px) rotate(-140deg);
+    opacity: 1;
   }
   100% {
     transform: translate(-80px, 0px) rotate(-180deg);
     bottom: -200px;
+    opacity: 0;
   }
 }
 @keyframes rightRemove {
@@ -91,10 +93,12 @@ body {
   }
   30% {
     transform: translate(40px, 0px) rotate(60deg);
+    opacity: 1;
   }
   100% {
     transform: translate(80px, 0px) rotate(90deg);
     bottom: -200px;
+    opacity: 0;
   }
 }
 .mousePointer {

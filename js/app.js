@@ -19,26 +19,13 @@ document.addEventListener("DOMContentLoaded", () => {
   let winWidth = window.innerWidth;
   let gameDisplay = document.getElementById("wrapper");
   let imgUrls = [
-    "images/indications/g1.png?" + Math.random(),
-    "images/indications/g2.png?" + Math.random(),
-    "images/indications/g3.png?" + Math.random(),
-    "images/indications/g4.png?" + Math.random(),
-    "images/indications/g5.png?" + Math.random(),
-    "images/indications/g6.png?" + Math.random(),
-    "images/indications/g7.png?" + Math.random(),
-    "images/indications/g8.png?" + Math.random(),
-    "images/indications/g9.png?" + Math.random(),
-    "images/indications/g10.png?" + Math.random(),
-    "images/indications/b1.png?" + Math.random(),
-    "images/indications/b2.png?" + Math.random(),
-    "images/indications/b3.png?" + Math.random(),
-    "images/indications/b4.png?" + Math.random(),
-    "images/indications/b5.png?" + Math.random(),
-    "images/indications/b6.png?" + Math.random(),
-    "images/indications/g10-1.png?" + Math.random(),
-    "images/indications/g10-2.png?" + Math.random(),
+    "images/indications/pink-1.png?" + Math.random(),
+    "images/indications/pink-1-left.png?" + Math.random(),
+    "images/indications/pink-1-right.png?" + Math.random(),
+    "images/indications/red-1.png?" + Math.random(),
+    "images/indications/red-1-left.png?" + Math.random(),
+    "images/indications/red-1-right.png?" + Math.random(),
   ];
-  const fullView = document.documentElement;
   for (let i = 0; i < imgUrls.length; i++) {
     imgs.push(new Image());
     imgs[i].src = imgUrls[i];
@@ -63,146 +50,146 @@ document.addEventListener("DOMContentLoaded", () => {
       {
         id: 0,
         name: "Impetigo",
-        status: "good",
+        status: "bad",
         point: 1,
-        img: imgs[0],
-        img1: imgs[16],
-        img2: imgs[17],
+        img: imgs[3],
+        img1: imgs[4],
+        img2: imgs[5],
       },
       {
         id: 1,
         name: "Pyoderma",
-        status: "good",
+        status: "bad",
         point: 1,
-        img: imgs[1],
-        img1: imgs[16],
-        img2: imgs[17],
+        img: imgs[3],
+        img1: imgs[4],
+        img2: imgs[5],
       },
       {
         id: 2,
         name: "Cellulitis",
-        status: "good",
+        status: "bad",
         point: 1,
-        img: imgs[2],
-        img1: imgs[16],
-        img2: imgs[17],
+        img: imgs[3],
+        img1: imgs[4],
+        img2: imgs[5],
       },
       {
         id: 3,
         name: "Cuts",
-        status: "good",
+        status: "bad",
         point: 1,
         img: imgs[3],
-        img1: imgs[16],
-        img2: imgs[17],
+        img1: imgs[4],
+        img2: imgs[5],
       },
       {
         id: 4,
         name: "Wounds",
-        status: "good",
+        status: "bad",
         point: 1,
-        img: imgs[4],
-        img1: imgs[16],
-        img2: imgs[17],
+        img: imgs[3],
+        img1: imgs[4],
+        img2: imgs[5],
       },
       {
         id: 5,
         name: "Burns",
-        status: "good",
+        status: "bad",
         point: 1,
-        img: imgs[5],
-        img1: imgs[16],
-        img2: imgs[17],
+        img: imgs[3],
+        img1: imgs[4],
+        img2: imgs[5],
       },
       {
         id: 6,
         name: "Abscess",
-        status: "good",
+        status: "bad",
         point: 1,
-        img: imgs[6],
-        img1: imgs[16],
-        img2: imgs[17],
+        img: imgs[3],
+        img1: imgs[4],
+        img2: imgs[5],
       },
       {
         id: 7,
         name: "Primary Skin Infections",
-        status: "good",
+        status: "bad",
         point: 1,
-        img: imgs[7],
-        img1: imgs[16],
-        img2: imgs[17],
+        img: imgs[3],
+        img1: imgs[4],
+        img2: imgs[5],
       },
       {
         id: 8,
         name: "Secondary Skin Infections",
-        status: "good",
+        status: "bad",
         point: 1,
-        img: imgs[8],
-        img1: imgs[16],
-        img2: imgs[17],
+        img: imgs[3],
+        img1: imgs[4],
+        img2: imgs[5],
       },
       {
         id: 9,
         name: "SSIs",
-        status: "good",
+        status: "bad",
         point: 1,
-        img: imgs[9],
-        img1: imgs[16],
-        img2: imgs[17],
+        img: imgs[3],
+        img1: imgs[4],
+        img2: imgs[5],
       },
       {
         id: 10,
         name: "IDSA accredited",
-        status: "bad",
+        status: "good",
         point: 1,
-        img: imgs[10],
-        img1: imgs[16],
-        img2: imgs[17],
+        img: imgs[0],
+        img1: imgs[1],
+        img2: imgs[2],
       },
       {
         id: 11,
         name: "AAFP accredited",
-        status: "bad",
+        status: "good",
         point: 1,
-        img: imgs[11],
-        img1: imgs[16],
-        img2: imgs[17],
+        img: imgs[0],
+        img1: imgs[1],
+        img2: imgs[2],
       },
       {
         id: 12,
         name: "High cure rate",
-        status: "bad",
+        status: "good",
         point: 1,
-        img: imgs[12],
-        img1: imgs[16],
-        img2: imgs[17],
+        img: imgs[0],
+        img1: imgs[1],
+        img2: imgs[2],
       },
       {
         id: 13,
         name: "Most prefered mupirocin",
-        status: "bad",
+        status: "good",
         point: 1,
-        img: imgs[13],
-        img1: imgs[16],
-        img2: imgs[17],
+        img: imgs[0],
+        img1: imgs[1],
+        img2: imgs[2],
       },
       {
         id: 14,
         name: "40 countries",
-        status: "bad",
+        status: "good",
         point: 1,
-        img: imgs[14],
-        img1: imgs[16],
-        img2: imgs[17],
+        img: imgs[0],
+        img1: imgs[1],
+        img2: imgs[2],
       },
       {
         id: 15,
         name: "2 decades trust",
-        status: "bad",
+        status: "good",
         point: 1,
-        img: imgs[15],
-        img1: imgs[16],
-        img2: imgs[17],
+        img: imgs[0],
+        img1: imgs[1],
+        img2: imgs[2],
       },
     ];
     // let generateObs = setTimeout(generateObstacle, 1000);
@@ -226,7 +213,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <img src="${createObs.img.src}" class="mainImg" data-id="${
         createObs.id
       }" data-status="${createObs.status}" data-point="${createObs.point}" />
-        <div class="point">${createObs.status === "good" ? "+" : "-"}${
+        <div class="point">${createObs.status === "good" ? "-" : "+"}${
         createObs.point
       }</div>
       `;
@@ -272,7 +259,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (obs.className === "mainImg") {
               let getPoint = obs.getAttribute("data-point");
               let getStaus = obs.getAttribute("data-status");
-              if (getStaus === "good") {
+              if (getStaus === "bad") {
                 // goodHit.play();
                 score = score + parseInt(getPoint);
               } else {
@@ -304,7 +291,7 @@ document.addEventListener("DOMContentLoaded", () => {
           obstacle.remove();
         }
       }, 4000);
-      if (obsCount === setCount) {
+      if (obsCount === 25) {
         clearInterval(generateObs);
       }
       range = (score * 100) / setCount;
@@ -312,7 +299,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     let generateObs = setInterval(() => {
       generateObstacle();
-    }, 1000);
+    }, 2000);
 
     function startTimer() {
       let count = setCount;
