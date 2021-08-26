@@ -2,7 +2,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const startScreen = document.getElementById("startScreen");
   const loader = document.getElementById("loader");
   const getStart = document.getElementById("getStart");
-  let setCount = 50;
+  let setTime = 60;
+  let setCount = 10;
   let obsCount = 0;
   let range;
   const body = document.body;
@@ -197,7 +198,6 @@ document.addEventListener("DOMContentLoaded", () => {
     startTimer();
 
     function generateObstacle() {
-      obsCount = obsCount + 1;
       let randomX = Math.floor(Math.random() * (winWidth - 160));
       if (randomX < 80) {
         randomX = 80;
@@ -217,24 +217,27 @@ document.addEventListener("DOMContentLoaded", () => {
         createObs.point
       }</div>
       `;
+      if (createObs.status === "bad") {
+        obsCount = obsCount + 1;
+      }
       gameDisplay.appendChild(obstacle);
 
       let mousePointer = document.createElement("div");
       mousePointer.classList.add("mousePointer");
       body.addEventListener("touchstart", startTouch);
-      body.addEventListener("mousedown", startTouch);
+      // body.addEventListener("mousedown", startTouch);
       body.addEventListener("touchend", removeTouch);
-      body.addEventListener("mouseup", removeTouch);
+      // body.addEventListener("mouseup", removeTouch);
 
       function startTouch(e) {
         body.append(mousePointer);
         body.addEventListener("touchmove", move);
-        body.addEventListener("mousemove", move);
+        // body.addEventListener("mousemove", move);
         move(e);
       }
       function removeTouch(e) {
         body.removeEventListener("touchmove", move);
-        body.removeEventListener("mousemove", move);
+        // body.removeEventListener("mousemove", move);
         mousePointer.remove();
       }
       function move(e) {
@@ -253,8 +256,6 @@ document.addEventListener("DOMContentLoaded", () => {
           object_1.top < object_2.top + object_2.height &&
           object_1.top + object_1.height > object_2.top
         ) {
-          // document.getElementById("scoreTxt").innerHTML = score;
-          // console.log(score);
           obstacle.childNodes.forEach((obs) => {
             if (obs.className === "mainImg") {
               let getPoint = obs.getAttribute("data-point");
@@ -266,7 +267,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 score = score - parseInt(getPoint);
               }
               obs.remove();
-              document.getElementById("scoreTxt").innerHTML = score;
+              if (score > 0) {
+                document.getElementById("scoreTxt").innerHTML = score;
+              } else {
+                score = 0;
+                document.getElementById("scoreTxt").innerHTML = score;
+              }
             }
             if (obs.className === "leftImg") {
               obs.classList.add("remove");
@@ -291,18 +297,20 @@ document.addEventListener("DOMContentLoaded", () => {
           obstacle.remove();
         }
       }, 4000);
-      if (obsCount === 25) {
-        clearInterval(generateObs);
-      }
+
       range = (score * 100) / setCount;
       document.querySelector(".range").style.width = 100 - range + "%";
+      if (range > 99) {
+        clearInterval(generateObs);
+        clearInterval(timer);
+      }
     }
     let generateObs = setInterval(() => {
       generateObstacle();
     }, 2000);
 
     function startTimer() {
-      let count = setCount;
+      let count = setTime;
       timer = setInterval(function () {
         document.getElementById("timer").textContent = count--;
         if (count < 0) {
