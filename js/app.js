@@ -241,7 +241,16 @@ document.addEventListener("DOMContentLoaded", () => {
         mousePointer.remove();
       }
       function move(e) {
+        let dot = document.createElement("div");
+        dot.classList.add("dot");
+        dot.style.left = `${e.touches[0].pageX - 1}px`;
+        dot.style.top = `${e.touches[0].pageY - 1}px`;
+        body.append(dot);
+        setTimeout(() => {
+          dot.remove();
+        }, 150);
         // throwSound.play();
+
         mousePointer.style.left = e.touches[0].pageX - 1 + "px";
         mousePointer.style.top = e.touches[0].pageY - 1 + "px";
         mousePointer.style.cursor = "pointer";
