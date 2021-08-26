@@ -1,5 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   const startScreen = document.getElementById("startScreen");
+  const loginScreen = document.getElementById("loginScreen");
+
   window.addEventListener("load", function () {
     startScreen.classList.add("hide");
   });
@@ -37,13 +39,14 @@ document.addEventListener("DOMContentLoaded", () => {
     counter++;
     if (counter === imgUrls.length) {
       console.log("done");
+      const loginBtn = document.getElementById("loginBtn");
+      loginBtn.addEventListener("click", function () {
+        loginScreen.remove();
+        init();
+      });
       // startScreen.classList.add("hide");
     }
   }
-  // getStart.addEventListener("click", function () {
-  //   startScreen.remove();
-  //   init();
-  // });
 
   function init() {
     let throwSound = new Audio("sound/throw.mp3?" + Math.random());
@@ -246,7 +249,7 @@ document.addEventListener("DOMContentLoaded", () => {
         setTimeout(() => {
           dot.remove();
         }, 150);
-        // throwSound.play();
+        throwSound.play();
 
         mousePointer.style.left = e.touches[0].pageX - 1 + "px";
         mousePointer.style.top = e.touches[0].pageY - 1 + "px";
@@ -267,7 +270,7 @@ document.addEventListener("DOMContentLoaded", () => {
               let getPoint = obs.getAttribute("data-point");
               let getStaus = obs.getAttribute("data-status");
               if (getStaus === "bad") {
-                // goodHit.play();
+                goodHit.play();
                 score = score + parseInt(getPoint);
               } else {
                 score = score - parseInt(getPoint);
