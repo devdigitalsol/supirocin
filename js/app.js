@@ -1,6 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
   const startScreen = document.getElementById("startScreen");
-  const loader = document.getElementById("loader");
+  window.addEventListener("load", function () {
+    startScreen.classList.add("hide");
+  });
   let setTime = 60;
   let setCount = 10;
   let obsCount = 0;
@@ -34,8 +36,8 @@ document.addEventListener("DOMContentLoaded", () => {
   function incrementCounter() {
     counter++;
     if (counter === imgUrls.length) {
-      startScreen.classList.add("hide");
-      loader.remove();
+      console.log("done");
+      // startScreen.classList.add("hide");
     }
   }
   // getStart.addEventListener("click", function () {
