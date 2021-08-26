@@ -255,7 +255,7 @@ document.addEventListener("DOMContentLoaded", () => {
         setTimeout(() => {
           dot.remove();
         }, 150);
-        throwSound.play();
+        // throwSound.play();
 
         mousePointer.style.left = e.touches[0].pageX - 1 + "px";
         mousePointer.style.top = e.touches[0].pageY - 1 + "px";
@@ -276,7 +276,7 @@ document.addEventListener("DOMContentLoaded", () => {
               let getPoint = obs.getAttribute("data-point");
               let getStaus = obs.getAttribute("data-status");
               if (getStaus === "bad") {
-                goodHit.play();
+                // goodHit.play();
                 score = score + parseInt(getPoint);
               } else {
                 score = score - parseInt(getPoint);
