@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   const startScreen = document.getElementById("startScreen");
   const loader = document.getElementById("loader");
-  const getStart = document.getElementById("getStart");
   let setTime = 60;
   let setCount = 10;
   let obsCount = 0;
@@ -35,14 +34,14 @@ document.addEventListener("DOMContentLoaded", () => {
   function incrementCounter() {
     counter++;
     if (counter === imgUrls.length) {
+      startScreen.classList.add("hide");
       loader.remove();
-      getStart.classList.add("show");
     }
   }
-  getStart.addEventListener("click", function () {
-    startScreen.remove();
-    init();
-  });
+  // getStart.addEventListener("click", function () {
+  //   startScreen.remove();
+  //   init();
+  // });
 
   function init() {
     let throwSound = new Audio("sound/throw.mp3?" + Math.random());
@@ -225,19 +224,15 @@ document.addEventListener("DOMContentLoaded", () => {
       let mousePointer = document.createElement("div");
       mousePointer.classList.add("mousePointer");
       body.addEventListener("touchstart", startTouch);
-      // body.addEventListener("mousedown", startTouch);
       body.addEventListener("touchend", removeTouch);
-      // body.addEventListener("mouseup", removeTouch);
 
       function startTouch(e) {
         body.append(mousePointer);
         body.addEventListener("touchmove", move);
-        // body.addEventListener("mousemove", move);
         move(e);
       }
       function removeTouch(e) {
         body.removeEventListener("touchmove", move);
-        // body.removeEventListener("mousemove", move);
         mousePointer.remove();
       }
       function move(e) {
