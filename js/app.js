@@ -6,7 +6,14 @@ document.addEventListener("DOMContentLoaded", () => {
   const loginForm = document.querySelector(".loginForm");
   const introLayout = document.querySelector(".introLayout");
   const gameDisplay = document.getElementById("wrapper");
+  const loginBtn = document.getElementById("loginBtn");
+
+  // form data
+
+  const name = document.getElementById("name");
+  const email = document.getElementById("email");
   const state = document.getElementById("state");
+  const city = document.getElementById("city");
   const stateData = [
     { state: "Andaman and Nicobar Islands", zone: "east" },
     { state: "Andhra Pradesh", zone: "south" },
@@ -84,8 +91,15 @@ document.addEventListener("DOMContentLoaded", () => {
     loginScreen.style.opacity = 1;
 
     loginBtn.addEventListener("click", function () {
-      loginForm.classList.add("hide");
-      introLayout.classList.add("show");
+      if (
+        name.value.trim().length > 0 &&
+        email.value.trim().length > 0 &&
+        state.value.trim().length > 0 &&
+        city.value.trim().length > 0
+      ) {
+        loginForm.classList.add("hide");
+        introLayout.classList.add("show");
+      }
     });
   });
   playBtn.addEventListener("click", function () {
@@ -321,6 +335,17 @@ document.addEventListener("DOMContentLoaded", () => {
           object_1.top + object_1.height > object_2.top
         ) {
           item.childNodes.forEach((obs) => {
+            if (obs.className === "leftImg") {
+              obs.classList.add("remove");
+            }
+            if (obs.className === "rightImg") {
+              obs.classList.add("remove");
+            }
+            if (obs.className === "point") {
+              setTimeout(() => {
+                obs.classList.add("hide");
+              }, 500);
+            }
             if (obs.className === "mainImg") {
               let getPoint = obs.getAttribute("data-point");
               let getStaus = obs.getAttribute("data-status");
@@ -345,17 +370,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 score = 0;
                 document.getElementById("scoreTxt").innerHTML = score;
               }
-            }
-            if (obs.className === "leftImg") {
-              obs.classList.add("remove");
-            }
-            if (obs.className === "rightImg") {
-              obs.classList.add("remove");
-            }
-            if (obs.className === "point") {
-              setTimeout(() => {
-                obs.classList.add("hide");
-              }, 500);
             }
           });
           setTimeout(() => {

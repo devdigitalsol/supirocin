@@ -24,16 +24,18 @@
           </div>
           <form id="login">
             <div class="formGroup">
-              <input type="text" placeholder="Enter Name">
+              <input type="text" placeholder="Enter Name" id="name" name="name">
             </div>
             <div class="formGroup">
-              <input type="email" placeholder="Enter Email">
+              <input type="email" placeholder="Enter Email" id="email" name="email">
             </div>
             <div class="formGroup">
-              <select name="state" id="state"></select>
+              <select name="state" id="state">
+                <option value="" disabled selected>Select State</option>
+              </select>
             </div>
             <div class="formGroup">
-              <input type="text" placeholder="Enter City">
+              <input type="text" placeholder="Enter City" id="city" name="city">
             </div>
             <button type="button" class="loginBtn" id="loginBtn">
               <span>Submit</span>
@@ -62,7 +64,7 @@
     </div>
     <div id="wrapper" class="gameScreen">
       <div class="logo">
-        <img src="images/logo.png" alt="">
+        <img src="images/supironinja.png" alt="">
       </div>
       <div id="totalScore">
         <span id="scoreTxt">0</span>

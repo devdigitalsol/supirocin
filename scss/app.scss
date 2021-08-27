@@ -459,9 +459,10 @@ body {
     height: 46px;
     position: absolute;
     left: 50%;
-    top: 0;
+    top: 28px;
     transform: translateX(-50%);
     img {
+      width: 100%;
       display: block;
     }
   }
