@@ -1,104 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>Supirocin | Glenmark</title>
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="css/app.css" />
-    <script src="js/app.js"></script>
-  </head>
-  <body>
-    <div id="startScreen">
-      <div class="waitScreen">
-        <h1>please wait ...</h1>
-      </div>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Supirocin | Glenmark</title>
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="css/app.css" />
+  <script src="js/app.js"></script>
+</head>
+
+<body>
+  <div id="startScreen">
+    <div class="waitScreen">
+      <h1>please wait ...</h1>
     </div>
-    <div id="loginScreen" class="loginScreen">
-      <img src="images/supironinja.png" alt="" class="supironinja">
-      <div class="board">
-        <div class="loginForm">
-          <div class="loginTitle">
-            <span>Login</span>
-            <img src="images/blueTitle.png" alt="">
-          </div>
-          <form id="login">
-            <div class="formGroup">
-              <input type="text" placeholder="Enter Name" id="name" name="name">
-            </div>
-            <div class="formGroup">
-              <input type="email" placeholder="Enter Email" id="email" name="email">
-            </div>
-            <div class="formGroup">
-              <select name="state" id="state">
-                <option value="" disabled selected>Select State</option>
-              </select>
-            </div>
-            <div class="formGroup">
-              <input type="text" placeholder="Enter City" id="city" name="city">
-            </div>
-            <button type="button" class="loginBtn" id="loginBtn">
-              <span>Submit</span>
-              <img src="images/blueBtn.png" />
-            </button>
-          </form>
+  </div>
+  <div id="loginScreen" class="loginScreen">
+    <img src="images/supironinja.png" alt="" class="supironinja">
+    <div class="board">
+      <div class="loginForm">
+        <div class="loginTitle">
+          <span>Login</span>
+          <img src="images/blueTitle.png" alt="">
         </div>
-        <div class="introLayout">
-          <div class="introTitle">
-            <span>Instruction</span>
-            <img src="images/blueTitle.png" alt="">
+        <form id="login">
+          <div class="formGroup">
+            <input type="text" placeholder="Enter Name" id="name" name="name">
           </div>
-          <div class="introData">
-            <ul>
-              <li>1. Slash the skin conditions with the sure cure power of Supirocin to score the maximum points in 60 seconds.</li>
-              <li>2. Be alert, slashing the features of Supirocin will get you negative marking</li>
-            </ul>
-              <img src="images/allthebest.png" class="allthebest">
-            <button type="button" class="playBtn" id="playBtn">
-              <span>Play</span>
-              <img src="images/blueBtn.png" />
-            </button>
+          <div class="formGroup">
+            <input type="email" placeholder="Enter Email" id="email" name="email">
           </div>
+          <div class="formGroup">
+            <select name="state" id="state">
+              <option value="" disabled selected>Select State</option>
+            </select>
+          </div>
+          <div class="formGroup">
+            <input type="text" placeholder="Enter City" id="city" name="city">
+          </div>
+          <button type="button" class="loginBtn" id="loginBtn">
+            <span>Submit</span>
+            <img src="images/blueBtn.png" />
+          </button>
+        </form>
+      </div>
+      <div class="introLayout">
+        <div class="introTitle">
+          <span>Instruction</span>
+          <img src="images/blueTitle.png" alt="">
+        </div>
+        <div class="introData">
+          <ul>
+            <li>1. Slash the skin conditions with the sure cure power of Supirocin to score the maximum points in 60
+              seconds.</li>
+            <li>2. Be alert, slashing the features of Supirocin will get you negative marking</li>
+          </ul>
+          <img src="images/allthebest.png" class="allthebest">
+          <button type="button" class="playBtn" id="playBtn">
+            <span>Play</span>
+            <img src="images/blueBtn.png" />
+          </button>
+        </div>
+        <div class="redSplash">
+          <img src="images/red-splash.png" alt="">
+        </div>
+        <div class="pinkSplash">
+          <img src="images/pink-splash.png" alt="">
         </div>
       </div>
     </div>
-    <div id="wrapper" class="gameScreen">
-      <div class="logo">
-        <img src="images/supironinja.png" alt="">
-      </div>
-      <div id="totalScore">
-        <span id="scoreTxt">0</span>
-        <img src="images/scoreBg.png" />
-      </div>
-      <div id="totalTime">
-        <span id="timer">60</span>
-        <img src="images/timeBg.png" />
-      </div>
-      <div id="meter">
-          <span class="meterTxt">Skin Infection Meter</span>
-          <div class="innerMeter">
-              <div class="range"></div>
-          </div>
-        <img src="images/meter.png" />
-      </div>
+  </div>
+  <div id="wrapper" class="gameScreen">
+    <div class="logo">
+      <img src="images/supironinja.png" alt="">
     </div>
-    <div id="resultScreen" class="resultScreen">
-      <div class="board">
-        <p>for your participation.</p>
-        <ul>
-          <li>Score: <span id="finalScore">0</span></li>
-          <li>Time: <span id="finalTime">0</span></li>
-        </ul>
-        <button type="button" class="replayBtn"></button>
-      </div>
-      <div class="logo">
-        <img src="images/logo.png" alt="">
-      </div>
-      <div class="packshot">
-        <img src="images/packshot.png" alt="">
-      </div>
+    <div id="totalScore">
+      <span id="scoreTxt">0</span>
+      <img src="images/scoreBg.png" />
     </div>
-  </body>
+    <div id="totalTime">
+      <span id="timer">60</span>
+      <img src="images/timeBg.png" />
+    </div>
+    <div id="meter">
+      <span class="meterTxt">Skin Infection Meter</span>
+      <div class="innerMeter">
+        <div class="range"></div>
+      </div>
+      <img src="images/meter.png" />
+    </div>
+  </div>
+  <div id="resultScreen" class="resultScreen">
+    <div class="board">
+      <p>for your participation.</p>
+      <ul>
+        <li>Score: <span id="finalScore">0</span></li>
+        <li>Time: <span id="finalTime">0</span></li>
+      </ul>
+      <button type="button" class="replayBtn"></button>
+    </div>
+    <div class="logo">
+      <img src="images/logo.png" alt="">
+    </div>
+    <div class="packshot">
+      <img src="images/packshot.png" alt="">
+    </div>
+  </div>
+</body>
+
 </html>

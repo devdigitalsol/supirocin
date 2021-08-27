@@ -402,6 +402,7 @@ document.addEventListener("DOMContentLoaded", () => {
               } else {
                 score = score - parseInt(getPoint);
               }
+              obs.remove();
               range = (score * 100) / setCount;
               document.querySelector(".range").style.width = 100 - range + "%";
               if (range >= 100) {
