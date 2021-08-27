@@ -17,9 +17,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const state = document.getElementById("state");
   const city = document.getElementById("city");
 
-  const gameSound = new Audio("sound/game.mp3");
+  const gameSound = new Audio(`sound/game.mp3?${Math.random()}`);
+  const clap = new Audio(`sound/clap.mp3?${Math.random()}`);
   gameSound.loop = true;
-  gameSound.volume = 0.5;
 
   replayBtn.addEventListener("click", () => {
     window.location.reload();
@@ -436,6 +436,8 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       });
       function showResult() {
+        gameSound.pause();
+        clap.play();
         document.getElementById("finalScore").innerHTML = score;
         document.getElementById("finalTime").innerHTML =
           document.getElementById("timer").textContent;
