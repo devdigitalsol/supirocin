@@ -383,17 +383,6 @@ document.addEventListener("DOMContentLoaded", () => {
           object_1.top + object_1.height > object_2.top
         ) {
           item.childNodes.forEach((obs) => {
-            if (obs.className === "leftImg") {
-              obs.classList.add("remove");
-            }
-            if (obs.className === "rightImg") {
-              obs.classList.add("remove");
-            }
-            if (obs.className === "point") {
-              setTimeout(() => {
-                obs.classList.add("hide");
-              }, 500);
-            }
             if (obs.className === "mainImg") {
               let getPoint = obs.getAttribute("data-point");
               let getStaus = obs.getAttribute("data-status");
@@ -402,7 +391,7 @@ document.addEventListener("DOMContentLoaded", () => {
               } else {
                 score = score - parseInt(getPoint);
               }
-              obs.remove();
+
               range = (score * 100) / setCount;
               document.querySelector(".range").style.width = 100 - range + "%";
               if (range >= 100) {
@@ -420,6 +409,17 @@ document.addEventListener("DOMContentLoaded", () => {
                 score = 0;
                 document.getElementById("scoreTxt").innerHTML = score;
               }
+            }
+            if (obs.className === "leftImg") {
+              obs.classList.add("remove");
+            }
+            if (obs.className === "rightImg") {
+              obs.classList.add("remove");
+            }
+            if (obs.className === "point") {
+              setTimeout(() => {
+                obs.classList.add("hide");
+              }, 500);
             }
           });
           setTimeout(() => {
