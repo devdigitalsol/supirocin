@@ -53,6 +53,7 @@ body {
   align-items: center;
   z-index: 1;
   flex-direction: column;
+  opacity: 0;
   .supironinja {
     margin-top: 16px;
     margin-bottom: 8px;
@@ -449,6 +450,7 @@ body {
   }
 }
 .gameScreen {
+  opacity: 0;
   .logo {
     width: 150px;
     height: 46px;
