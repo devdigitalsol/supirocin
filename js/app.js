@@ -240,8 +240,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     function generateObstacle() {
       let randomX = Math.floor(Math.random() * (winWidth - 160));
-      if (randomX < 80) {
-        randomX = 80;
+      if (randomX < 100) {
+        randomX = 100;
       }
       let createObs = data[Math.floor(Math.random() * data.length)];
       let obstacleLeft = randomX;
