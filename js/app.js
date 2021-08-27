@@ -17,9 +17,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const state = document.getElementById("state");
   const city = document.getElementById("city");
 
-  const gameSound = new Audio(`sound/game.mp3?${Math.random()}`);
-  const clap = new Audio(`sound/clap.mp3?${Math.random()}`);
-  gameSound.loop = true;
+  const soundGood = document.getElementById("soundGood");
+  const soundBad = document.getElementById("soundBad");
+  const soundDraw = document.getElementById("soundDraw");
+  const soundGame = document.getElementById("soundGame");
+  const soundClap = document.getElementById("soundClap");
 
   replayBtn.addEventListener("click", () => {
     window.location.reload();
@@ -151,7 +153,7 @@ document.addEventListener("DOMContentLoaded", () => {
       ) {
         loginForm.classList.add("hide");
         introLayout.classList.add("show");
-        gameSound.play();
+        soundGame.play();
       }
     });
   });
@@ -334,6 +336,7 @@ document.addEventListener("DOMContentLoaded", () => {
       mousePointer.remove();
     }
     function move(e) {
+      soundDraw.play();
       let dot = document.createElement("div");
       dot.classList.add("dot");
       dot.style.left = `${e.touches[0].pageX - 1}px`;
@@ -393,8 +396,10 @@ document.addEventListener("DOMContentLoaded", () => {
               let getStaus = obs.getAttribute("data-status");
               if (getStaus === "bad") {
                 score = score + parseInt(getPoint);
+                soundGood.play();
               } else {
                 score = score - parseInt(getPoint);
+                soundBad.play();
               }
               obs.remove();
               range = (score * 100) / setCount;
@@ -436,8 +441,8 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       });
       function showResult() {
-        gameSound.pause();
-        clap.play();
+        soundGame.pause();
+        soundClap.play();
         document.getElementById("finalScore").innerHTML = score;
         document.getElementById("finalTime").innerHTML =
           document.getElementById("timer").textContent;
