@@ -7,6 +7,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const introLayout = document.querySelector(".introLayout");
   const gameDisplay = document.getElementById("wrapper");
   const loginBtn = document.getElementById("loginBtn");
+  const resultScreen = document.getElementById("resultScreen");
+  const replayBtn = document.querySelector(".replayBtn");
 
   // form data
 
@@ -14,6 +16,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const email = document.getElementById("email");
   const state = document.getElementById("state");
   const city = document.getElementById("city");
+
+  replayBtn.addEventListener("click", () => {
+    window.location.reload();
+  });
   const stateData = [
     { state: "Andaman and Nicobar Islands", zone: "east" },
     { state: "Andhra Pradesh", zone: "south" },
@@ -362,6 +368,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 document.querySelectorAll(".obstacle").forEach((item) => {
                   item.remove();
                 });
+                showResult();
               }
               obs.remove();
               if (score > 0) {
@@ -377,6 +384,17 @@ document.addEventListener("DOMContentLoaded", () => {
           }, 3000);
         }
       });
+      function showResult() {
+        document.getElementById("finalScore").innerHTML = score;
+        document.getElementById("finalTime").innerHTML =
+          document.getElementById("timer").textContent;
+        setTimeout(() => {
+          gameDisplay.remove();
+          resultScreen.style.display = "flex";
+          body.removeEventListener("touchstart", startTouch);
+          body.removeEventListener("touchend", removeTouch);
+        }, 1000);
+      }
     }
     function startTimer() {
       let count = setTime;
@@ -385,6 +403,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (count < 0) {
           clearInterval(timer);
           clearInterval(generateObs);
+          showResult();
         }
       }, 1000);
     }
