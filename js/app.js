@@ -48,6 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   playBtn.addEventListener("click", function () {
     gameDisplay.style.opacity = 1;
+    startScreen.remove();
     loginScreen.remove();
     init();
   });
