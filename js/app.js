@@ -391,7 +391,7 @@ document.addEventListener("DOMContentLoaded", () => {
               } else {
                 score = score - parseInt(getPoint);
               }
-
+              obs.remove();
               range = (score * 100) / setCount;
               document.querySelector(".range").style.width = 100 - range + "%";
               if (range >= 100) {
@@ -402,7 +402,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 });
                 showResult();
               }
-              obs.remove();
+
               if (score > 0) {
                 document.getElementById("scoreTxt").innerHTML = score;
               } else {
@@ -412,15 +412,18 @@ document.addEventListener("DOMContentLoaded", () => {
             }
             if (obs.className === "leftImg") {
               obs.classList.add("remove");
+              console.log("left");
             }
             if (obs.className === "rightImg") {
               obs.classList.add("remove");
+              console.log("right");
             }
             if (obs.className === "point") {
               setTimeout(() => {
                 obs.classList.add("hide");
               }, 500);
             }
+            // obs.remove();
           });
           setTimeout(() => {
             item.remove();
