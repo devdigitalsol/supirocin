@@ -6,6 +6,48 @@ document.addEventListener("DOMContentLoaded", () => {
   const loginForm = document.querySelector(".loginForm");
   const introLayout = document.querySelector(".introLayout");
   const gameDisplay = document.getElementById("wrapper");
+  const state = document.getElementById("state");
+  const stateData = [
+    { state: "Andaman and Nicobar Islands", zone: "east" },
+    { state: "Andhra Pradesh", zone: "south" },
+    { state: "Arunachal Pradesh", zone: "east" },
+    { state: "Assam", zone: "east" },
+    { state: "Bihar", zone: "east" },
+    { state: "Chandigarh", zone: "north" },
+    { state: "Chhattisgarh", zone: "east" },
+    { state: "Dadra and Nagar Haveli", zone: "west" },
+    { state: "Delhi", zone: "north" },
+    { state: "Goa", zone: "west" },
+    { state: "Gujarat", zone: "west" },
+    { state: "Haryana", zone: "north" },
+    { state: "Himachal Pradesh", zone: "north" },
+    { state: "Jammu and Kashmir", zone: "north" },
+    { state: "Jharkhand", zone: "east" },
+    { state: "Karnataka", zone: "south" },
+    { state: "Kerala", zone: "south" },
+    { state: "Madhya Pradesh", zone: "west" },
+    { state: "Maharashtra", zone: "west" },
+    { state: "Manipur", zone: "east" },
+    { state: "Meghalaya", zone: "east" },
+    { state: "Mizoram", zone: "east" },
+    { state: "Nagaland", zone: "east" },
+    { state: "Odisha", zone: "east" },
+    { state: "Puducherry", zone: "east" },
+    { state: "Punjab", zone: "north" },
+    { state: "Rajasthan", zone: "north" },
+    { state: "Tamil Nadu", zone: "south" },
+    { state: "Telangana", zone: "south" },
+    { state: "Tripura", zone: "east" },
+    { state: "Uttar Pradesh", zone: "north" },
+    { state: "Uttarakhand", zone: "north" },
+    { state: "West Bengal", zone: "east" },
+  ];
+  for (let i = 0; i < stateData.length; i++) {
+    let opt = document.createElement("option");
+    opt.value = stateData[i].state;
+    opt.innerHTML = stateData[i].state;
+    state.appendChild(opt);
+  }
   let data = [],
     allObs = [],
     setTime = 60,
@@ -41,7 +83,7 @@ document.addEventListener("DOMContentLoaded", () => {
     startScreen.classList.add("hide");
     loginScreen.style.opacity = 1;
 
-    loginForm.addEventListener("click", function () {
+    loginBtn.addEventListener("click", function () {
       loginForm.classList.add("hide");
       introLayout.classList.add("show");
     });
@@ -240,8 +282,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     function generateObstacle() {
       let randomX = Math.floor(Math.random() * (winWidth - 160));
-      if (randomX < 100) {
-        randomX = 100;
+      if (randomX < 80) {
+        randomX = 80;
       }
       let createObs = data[Math.floor(Math.random() * data.length)];
       let obstacleLeft = randomX;
