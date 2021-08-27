@@ -308,9 +308,9 @@ body {
 }
 .obstacle {
   position: absolute;
-  width: 80px;
-  height: 80px;
-  transform: translateY(80px);
+  width: 100px;
+  height: 100px;
+  transform: translateY(100px);
   bottom: 0;
   border-radius: 50%;
   -webkit-animation: animateObs 4s both 0s ease-in-out;
@@ -374,62 +374,62 @@ body {
 
 @-webkit-keyframes leftRemove {
   0% {
-    transform: translate(-20px, -20px) rotate(0);
+    transform: translate(-40px, -20px) rotate(0);
     bottom: 0;
   }
   30% {
-    transform: translate(-40px, 0px) rotate(-140deg);
+    transform: translate(-60px, 0px) rotate(-140deg);
     opacity: 1;
   }
   100% {
-    transform: translate(-80px, 0px) rotate(-180deg);
-    bottom: -200px;
+    transform: translate(-100px, 0px) rotate(-180deg);
+    bottom: -300px;
     opacity: 0;
   }
 }
 
 @keyframes leftRemove {
   0% {
-    transform: translate(-20px, -20px) rotate(0);
+    transform: translate(-40px, -20px) rotate(0);
     bottom: 0;
   }
   30% {
-    transform: translate(-40px, 0px) rotate(-140deg);
+    transform: translate(-60px, 0px) rotate(-140deg);
     opacity: 1;
   }
   100% {
-    transform: translate(-80px, 0px) rotate(-180deg);
-    bottom: -200px;
+    transform: translate(-100px, 0px) rotate(-180deg);
+    bottom: -300px;
     opacity: 0;
   }
 }
 @-webkit-keyframes rightRemove {
   0% {
-    transform: translate(10px, -2px) rotate(0);
+    transform: translate(30px, -2px) rotate(0);
     bottom: 0;
   }
   30% {
-    transform: translate(40px, 0px) rotate(60deg);
+    transform: translate(70px, 0px) rotate(60deg);
     opacity: 1;
   }
   100% {
-    transform: translate(80px, 0px) rotate(90deg);
-    bottom: -200px;
+    transform: translate(100px, 0px) rotate(90deg);
+    bottom: -300px;
     opacity: 0;
   }
 }
 @keyframes rightRemove {
   0% {
-    transform: translate(10px, -2px) rotate(0);
+    transform: translate(30px, -2px) rotate(0);
     bottom: 0;
   }
   30% {
-    transform: translate(40px, 0px) rotate(60deg);
+    transform: translate(70px, 0px) rotate(60deg);
     opacity: 1;
   }
   100% {
-    transform: translate(80px, 0px) rotate(90deg);
-    bottom: -200px;
+    transform: translate(100px, 0px) rotate(90deg);
+    bottom: -300px;
     opacity: 0;
   }
 }

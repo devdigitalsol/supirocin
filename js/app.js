@@ -17,6 +17,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const state = document.getElementById("state");
   const city = document.getElementById("city");
 
+  const gameSound = new Audio("sound/game.mp3");
+  gameSound.loop = true;
+  gameSound.volume = 0.5;
+
   replayBtn.addEventListener("click", () => {
     window.location.reload();
   });
@@ -147,6 +151,7 @@ document.addEventListener("DOMContentLoaded", () => {
       ) {
         loginForm.classList.add("hide");
         introLayout.classList.add("show");
+        gameSound.play();
       }
     });
   });
@@ -343,9 +348,9 @@ document.addEventListener("DOMContentLoaded", () => {
       isCollapsed(mousePointer);
     }
     function generateObstacle() {
-      let randomX = Math.floor(Math.random() * (winWidth - 160));
-      if (randomX < 80) {
-        randomX = 80;
+      let randomX = Math.floor(Math.random() * (winWidth - 200));
+      if (randomX < 100) {
+        randomX = 100;
       }
       let createObs = data[Math.floor(Math.random() * data.length)];
       let obstacleLeft = randomX;
