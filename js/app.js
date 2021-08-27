@@ -69,8 +69,9 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   let data = [],
     allObs = [],
-    setTime = 60,
-    setCount = 10,
+    setTime = 90,
+    setCount = 2,
+    currentImg = 0,
     score = 0,
     imgs = [],
     counter = 0,
@@ -192,78 +193,6 @@ document.addEventListener("DOMContentLoaded", () => {
       },
       {
         id: 2,
-        name: "Cellulitis",
-        status: "bad",
-        point: 1,
-        img: imgs[6],
-        img1: imgs[7],
-        img2: imgs[8],
-      },
-      {
-        id: 3,
-        name: "Cuts",
-        status: "bad",
-        point: 1,
-        img: imgs[9],
-        img1: imgs[10],
-        img2: imgs[11],
-      },
-      {
-        id: 4,
-        name: "Wounds",
-        status: "bad",
-        point: 1,
-        img: imgs[12],
-        img1: imgs[13],
-        img2: imgs[14],
-      },
-      {
-        id: 5,
-        name: "Burns",
-        status: "bad",
-        point: 1,
-        img: imgs[15],
-        img1: imgs[16],
-        img2: imgs[17],
-      },
-      {
-        id: 6,
-        name: "Abscess",
-        status: "bad",
-        point: 1,
-        img: imgs[18],
-        img1: imgs[19],
-        img2: imgs[20],
-      },
-      {
-        id: 7,
-        name: "Primary Skin Infections",
-        status: "bad",
-        point: 1,
-        img: imgs[21],
-        img1: imgs[22],
-        img2: imgs[23],
-      },
-      {
-        id: 8,
-        name: "Secondary Skin Infections",
-        status: "bad",
-        point: 1,
-        img: imgs[24],
-        img1: imgs[25],
-        img2: imgs[26],
-      },
-      {
-        id: 9,
-        name: "SSIs",
-        status: "bad",
-        point: 1,
-        img: imgs[27],
-        img1: imgs[28],
-        img2: imgs[29],
-      },
-      {
-        id: 10,
         name: "IDSA accredited",
         status: "good",
         point: 1,
@@ -272,7 +201,34 @@ document.addEventListener("DOMContentLoaded", () => {
         img2: imgs[32],
       },
       {
-        id: 11,
+        id: 3,
+        name: "Cellulitis",
+        status: "bad",
+        point: 1,
+        img: imgs[6],
+        img1: imgs[7],
+        img2: imgs[8],
+      },
+      {
+        id: 4,
+        name: "Cuts",
+        status: "bad",
+        point: 1,
+        img: imgs[9],
+        img1: imgs[10],
+        img2: imgs[11],
+      },
+      {
+        id: 5,
+        name: "Wounds",
+        status: "bad",
+        point: 1,
+        img: imgs[12],
+        img1: imgs[13],
+        img2: imgs[14],
+      },
+      {
+        id: 6,
         name: "AAFP accredited",
         status: "good",
         point: 1,
@@ -281,7 +237,25 @@ document.addEventListener("DOMContentLoaded", () => {
         img2: imgs[35],
       },
       {
-        id: 12,
+        id: 7,
+        name: "Burns",
+        status: "bad",
+        point: 1,
+        img: imgs[15],
+        img1: imgs[16],
+        img2: imgs[17],
+      },
+      {
+        id: 8,
+        name: "Abscess",
+        status: "bad",
+        point: 1,
+        img: imgs[18],
+        img1: imgs[19],
+        img2: imgs[20],
+      },
+      {
+        id: 9,
         name: "High cure rate",
         status: "good",
         point: 1,
@@ -290,7 +264,16 @@ document.addEventListener("DOMContentLoaded", () => {
         img2: imgs[38],
       },
       {
-        id: 13,
+        id: 10,
+        name: "Primary Skin Infections",
+        status: "bad",
+        point: 1,
+        img: imgs[21],
+        img1: imgs[22],
+        img2: imgs[23],
+      },
+      {
+        id: 11,
         name: "Most prefered mupirocin",
         status: "good",
         point: 1,
@@ -299,7 +282,7 @@ document.addEventListener("DOMContentLoaded", () => {
         img2: imgs[41],
       },
       {
-        id: 14,
+        id: 12,
         name: "40 countries",
         status: "good",
         point: 1,
@@ -308,13 +291,31 @@ document.addEventListener("DOMContentLoaded", () => {
         img2: imgs[44],
       },
       {
-        id: 15,
+        id: 13,
+        name: "Secondary Skin Infections",
+        status: "bad",
+        point: 1,
+        img: imgs[24],
+        img1: imgs[25],
+        img2: imgs[26],
+      },
+      {
+        id: 14,
         name: "2 decades trust",
         status: "good",
         point: 1,
         img: imgs[45],
         img1: imgs[46],
         img2: imgs[47],
+      },
+      {
+        id: 15,
+        name: "SSIs",
+        status: "bad",
+        point: 1,
+        img: imgs[27],
+        img1: imgs[28],
+        img2: imgs[29],
       },
     ];
     let generateObs = setInterval(() => {
@@ -350,12 +351,16 @@ document.addEventListener("DOMContentLoaded", () => {
       mousePointer.style.cursor = "pointer";
       isCollapsed(mousePointer);
     }
+    console.log(data.length);
     function generateObstacle() {
+      console.log(currentImg);
+
       let randomX = Math.floor(Math.random() * (winWidth - 200));
       if (randomX < 100) {
         randomX = 100;
       }
-      let createObs = data[Math.floor(Math.random() * data.length)];
+      // let createObs = data[Math.floor(Math.random() * data.length)];
+      let createObs = data[currentImg];
       let obstacleLeft = randomX;
       const obstacle = document.createElement("div");
       obstacle.classList.add("obstacle");
@@ -373,7 +378,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
       gameDisplay.appendChild(obstacle);
       allObs.push(obstacle);
-
+      if (currentImg < data.length - 1) {
+        currentImg = currentImg + 1;
+      } else {
+        currentImg = 0;
+      }
       setTimeout(() => {
         if (gameDisplay.hasChildNodes()) {
           obstacle.remove();
@@ -440,19 +449,19 @@ document.addEventListener("DOMContentLoaded", () => {
           }, 3000);
         }
       });
-      function showResult() {
-        soundGame.pause();
-        soundClap.play();
-        document.getElementById("finalScore").innerHTML = score;
-        document.getElementById("finalTime").innerHTML =
-          document.getElementById("timer").textContent;
-        setTimeout(() => {
-          gameDisplay.remove();
-          resultScreen.style.display = "flex";
-          body.removeEventListener("touchstart", startTouch);
-          body.removeEventListener("touchend", removeTouch);
-        }, 1000);
-      }
+    }
+    function showResult() {
+      soundGame.pause();
+      soundClap.play();
+      document.getElementById("finalScore").innerHTML = score;
+      document.getElementById("finalTime").innerHTML =
+        setTime - document.getElementById("timer").textContent;
+      setTimeout(() => {
+        gameDisplay.remove();
+        resultScreen.style.display = "flex";
+        body.removeEventListener("touchstart", startTouch);
+        body.removeEventListener("touchend", removeTouch);
+      }, 1000);
     }
     function startTimer() {
       let count = setTime;
